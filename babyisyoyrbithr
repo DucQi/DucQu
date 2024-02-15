@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Geograficzny</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        input[type="submit"] {
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Quiz Geograficzny</h1>
+    </header>
+
+    <section>
+        <form id="quizForm">
+            <p>1. Stolica Francji to:</p>
+            <input type="radio" name="q1" value="a"> a) Paryż
+            <br>
+            <input type="radio" name="q1" value="b"> b) Londyn
+            <br>
+            <input type="radio" name="q1" value="c"> c) Berlin
+
+            <p>2. Najdłuższa rzeka na świecie to:</p>
+            <input type="radio" name="q2" value="a"> a) Amazonka
+            <br>
+            <input type="radio" name="q2" value="b"> b) Nil
+            <br>
+            <input type="radio" name="q2" value="c"> c) Jangcy
+
+            <p>3. Góra Everest znajduje się w:</p>
+            <input type="radio" name="q3" value="a"> a) Himalaje
+            <br>
+            <input type="radio" name="q3" value="b"> b) Alpy
+            <br>
+            <input type="radio" name="q3" value="c"> c) Andach
+
+            <p>4. Jaka to stolica: Tokio?</p>
+            <input type="radio" name="q4" value="a"> a) Japonia
+            <br>
+            <input type="radio" name="q4" value="b"> b) Chiny
+            <br>
+            <input type="radio" name="q4" value="c"> c) Indie
+
+            <p>5. Jaki kraj leży na Półwyspie Iberyjskim?</p>
+            <input type="radio" name="q5" value="a"> a) Portugalia
+            <br>
+            <input type="radio" name="q5" value="b"> b) Włochy
+            <br>
+            <input type="radio" name="q5" value="c"> c) Hiszpania
+
+            <br><br>
+
+            <input type="submit" value="Sprawdź wyniki" onclick="checkResults()">
+        </form>
+    </section>
+
+    <script>
+        function checkResults() {
+            // Pobierz wybrane odpowiedzi
+            var answers = [];
+            for (var i = 1; i <= 5; i++) {
+                var selectedOption = document.querySelector('input[name="q' + i + '"]:checked');
+                if (selectedOption) {
+                    answers.push(selectedOption.value);
+                }
+            }
+
+            // Sprawdź odpowiedzi i wyświetl wyniki
+            var correctAnswers = ["a", "a", "a", "a", "c"];
+            var correctCount = 0;
+
+            for (var i = 0; i < answers.length; i++) {
+                if (answers[i] === correctAnswers[i]) {
+                    correctCount++;
+                }
+            }
+
+            var message = "Wyniki quizu:\nPoprawne odpowiedzi: " + correctCount + "/5";
+            alert(message);
+        }
+    </script>
+
+</body>
+</html>
